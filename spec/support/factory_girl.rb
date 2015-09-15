@@ -8,6 +8,18 @@ FactoryGirl.define do
     factory :special_question do
       title "Special Question" * 10
     end
+
+    factory :question_with_answer do
+      after(:create) do |question|
+        create(:answer, question: question)
+      end
+    end
+
+  end
+
+  factory :answer do
+    sequence(:description) { |n| "description #{n}" * 5 }
+    question {Question.first}
   end
 
 end

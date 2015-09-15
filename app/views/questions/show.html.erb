@@ -1,2 +1,33 @@
-<%= @question.title %>
+<h2><%= @question.title %></h2>
 <%= @question.description %>
+<ul>
+  <%@question.answers.order(:created_at).each do |answer|%>
+    <li>
+      <%= answer.description %>
+    </li>
+  <%end%>
+</ul>
+
+
+<div class="row">
+  <%- if @answer.errors.present? -%>
+  <div class="large-12 alert-box alert" data-alert>
+      <ul>
+        <%- @answer.errors.full_messages.each do |error| -%>
+          <li><%= error %></li>
+        <%- end -%>
+      </ul>
+    </div>
+  <%- end -%>
+
+  <div class="large-12">
+    <h3>New Answer</h3>
+
+    <%= form_for [@question, @answer] do |f| %>
+      <%= f.label :description %>
+      <%= f.text_field :description %>
+
+      <%= f.submit "Add Answer" %>
+    <%- end -%>
+  </div>
+</div>
