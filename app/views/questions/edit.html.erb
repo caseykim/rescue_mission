@@ -1,0 +1,20 @@
+<%- if @question.errors.present? -%>
+  <div class="large-12 alert-box alert" data-alert>
+    <ul>
+      <%- @question.errors.full_messages.each do |error| -%>
+        <li><%= error %></li>
+      <%- end -%>
+    </ul>
+  </div>
+<%- end -%>
+<%= form_for @question do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+
+  <%= f.submit "Update Question" %>
+<%- end -%>
+
+<%= link_to "Delete", @question, method: :delete %>

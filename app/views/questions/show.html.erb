@@ -8,6 +8,8 @@
   <%end%>
 </ul>
 
+<%= link_to "Edit", edit_question_path(@question) %>
+<%= link_to "Delete", @question, method: :delete %>
 
 <div class="row">
   <%- if @answer.errors.present? -%>

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature "User answers a question", %(
+feature "User views answers to question", %(
   As a user
   I want to view the answers for a question
   So that I can learn from the answer
@@ -9,7 +9,7 @@ feature "User answers a question", %(
 
   [x] I must be on the question detail page
   [x] I must only see answers to the question I'm viewing
-  [ ] I must see all answers listed in order, most recent last
+  [x] I must see all answers listed in order, most recent last
 ) do
 
   let(:question){FactoryGirl.create(:question_with_answer)}
@@ -34,7 +34,8 @@ feature "User answers a question", %(
     another_answer = FactoryGirl.create(:answer, question: question)
     visit question_path(question)
 
-    expect(page.body.index(answer.description)).to be < page.body.index(another_answer.description)
+    expect(page.body.index(answer.description)).to be <
+     page.body.index(another_answer.description)
   end
 
 end

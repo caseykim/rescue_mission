@@ -23,6 +23,25 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def edit
+    @question = Question.find(params[:id])
+  end
+
+  def update
+    @question = Question.find(params[:id])
+    if @question.update_attributes(question_params)
+      flash[:notice] = 'Question updated.'
+      redirect_to questions_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    Question.find(params[:id]).destroy
+    redirect_to questions_path
+  end
+
   private
 
   def question_params
