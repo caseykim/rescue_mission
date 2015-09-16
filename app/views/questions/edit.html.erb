@@ -14,7 +14,6 @@
   <%= f.label :description %>
   <%= f.text_area :description %>
 
-  <%= f.submit "Update Question" %>
+  <%= f.submit "Update Question", class: "button right" %>
+  <%= link_to "Delete", @question, method: :delete, class: "secondary button right" %>
 <%- end -%>
-
-<%= link_to "Delete", @question, method: :delete %>

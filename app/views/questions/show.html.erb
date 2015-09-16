@@ -1,15 +1,17 @@
-<h2><%= @question.title %></h2>
-<%= @question.description %>
+<h2>
+  <%= @question.title %>
+  <%= link_to "Delete", @question, method: :delete, class: "secondary button right" %>
+  <%= link_to "Edit", edit_question_path(@question), class: "button right" %>
+</h2>
+<%= markdown @question.description %>
 <ul>
   <%@question.answers.order(:created_at).each do |answer|%>
     <li>
-      <%= answer.description %>
+      <%= markdown answer.description %>
     </li>
   <%end%>
 </ul>
 
-<%= link_to "Edit", edit_question_path(@question) %>
-<%= link_to "Delete", @question, method: :delete %>
 
 <div class="row">
   <%- if @answer.errors.present? -%>
@@ -27,9 +29,9 @@
 
     <%= form_for [@question, @answer] do |f| %>
       <%= f.label :description %>
-      <%= f.text_field :description %>
+      <%= f.text_area :description, class: "long_text" %>
 
-      <%= f.submit "Add Answer" %>
+      <%= f.submit "Add Answer", class: "button" %>
     <%- end -%>
   </div>
 </div>
