@@ -15,3 +15,13 @@
  *= require_self
 
  */
+ .main {
+   margin: auto;
+   width: 90%;
+ }
+
+ #best-answer {
+   background-color: rgba(18, 119, 191, 0.39);
+   height: auto;
+   text-align: center;
+ }

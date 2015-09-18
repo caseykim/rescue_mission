@@ -14,6 +14,12 @@ FactoryGirl.define do
         create(:answer, question: question)
       end
     end
+    
+    factory :question_with_answers do
+      after(:create) do |question|
+        5.times {create(:answer, question: question)}
+      end
+    end
 
   end
 

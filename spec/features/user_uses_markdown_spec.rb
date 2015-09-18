@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature "Markdown support", %(
+feature "User writes questions and answers using markdown syntax", %(
   As a user
   I want to write my questions and answers with markdown
   So I can easily format my questions and answers

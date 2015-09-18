@@ -1,19 +1,51 @@
-<h2>
-  <%= @question.title %>
-  <%= link_to "Delete", @question, method: :delete, class: "secondary button right" %>
-  <%= link_to "Edit", edit_question_path(@question), class: "button right" %>
-</h2>
-<%= markdown @question.description %>
-<ul>
-  <%@question.answers.order(:created_at).each do |answer|%>
-    <li>
-      <%= markdown answer.description %>
-    </li>
-  <%end%>
-</ul>
-
-
 <div class="row">
+  <div class="row large-12 columns">
+    <div class="large-10 columns">
+      <h2>
+        <%= @question.title %>
+      </h2>
+    </div>
+
+    <div class="large-2 columns">
+      <%= link_to "Delete", @question, method: :delete,
+        data: {confirm: "Are you sure?"}, class: "tiny secondary button right" %>
+      <%= link_to "Edit", edit_question_path(@question), class: "tiny button right" %>
+    </div>
+  </div>
+
+  <%= markdown @question.description %>
+
+  <div class="answers">
+    <% if @question.answers.best %>
+      <div id="best-answer" >
+        <li>
+          <%= markdown @question.answers.best.description %>
+        </li>
+      </div>
+    <% end %>
+
+    <ul>
+      <%@question.answers.other.order(:created_at).each do |answer|%>
+        <div class="row">
+          <div class="medium-10 columns">
+            <li>
+              <%= markdown answer.description %>
+            </li>
+          </div>
+
+          <div class="medium-2 columns">
+            <%= link_to "Accept", answer_path(answer),
+              method: :patch, id: "answer-#{answer.id}", class: "small button right" %>
+          </div>
+
+          </div>
+        <hr/>
+      <%end%>
+    </ul>
+  </div>
+
+
+
   <%- if @answer.errors.present? -%>
   <div class="large-12 alert-box alert" data-alert>
       <ul>
