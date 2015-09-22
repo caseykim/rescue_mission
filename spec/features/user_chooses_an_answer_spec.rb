@@ -7,9 +7,9 @@ feature "User chooses an answer", %(
 
   Acceptance Criteria
 
-  [ ] I must be on the question detail page
-  [ ] I must be able mark an answer as the best
-  [ ] I must see the "best" answer above all other answers in the answer list
+  [x] I must be on the question detail page
+  [x] I must be able mark an answer as the best
+  [x] I must see the "best" answer above all other answers in the answer list
 ) do
 
   let(:question) {FactoryGirl.create(:question_with_answers)}
