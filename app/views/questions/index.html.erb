@@ -4,3 +4,12 @@
   <% end %>
 </ul>
 <%= link_to "Ask a Question", new_question_path, class: "button" %>
+<ul>
+  <% if current_user %>
+    <li><%= current_user.name %></li>
+    <li><%= image_tag(current_user.image) %></li>
+    <li><%= link_to "Sign Out", sign_out_path %></li>
+  <% else %>
+    <%= link_to 'Sign in with GitHub', '/auth/github' %>
+  <% end %>
+</ul>

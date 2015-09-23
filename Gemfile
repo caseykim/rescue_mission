@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
-
+gem 'omniauth-github'
+gem 'dotenv-rails'
 gem 'redcarpet'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
