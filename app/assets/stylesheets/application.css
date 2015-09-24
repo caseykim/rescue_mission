@@ -25,3 +25,15 @@
    height: auto;
    text-align: center;
  }
+
+.top-bar-profile {
+  height: 45px;
+  width: 45px;
+  padding: 2px;
+}
+
+p.top-bar {
+  color: rgb(230, 60, 141);
+  font-size: 12px;
+  padding-right: 5px;
+}
