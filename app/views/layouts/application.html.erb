@@ -23,12 +23,15 @@
         <ul class="right">
           <% if current_user %>
             <li>
-              <p class="top-bar">Welcome, <%= current_user.name %>!</p>
+              <p class="top-bar">Welcome, <%= current_user.name %> </p>
             </li>
             <li><%= image_tag(current_user.image, class: "top-bar-profile") %></li>
             <li><%= link_to "Sign Out", sign_out_path %></li>
           <% else %>
-            <li><%= link_to 'Sign in with GitHub', '/auth/github' %></li>
+            <li><p class="top-bar">Sign In with </li>
+            <li><%= link_to 'Facebook', '/auth/facebook' %></li>
+            <li><p class="top-bar">/</li>
+            <li><%= link_to 'GitHub', '/auth/github' %></li>
           <% end %>
         </ul>
       </section>
